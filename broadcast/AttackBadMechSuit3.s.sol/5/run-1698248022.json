@@ -1,0 +1,36 @@
+{
+  "transactions": [
+    {
+      "hash": "0x9d8116c796e180c64248ab7b16806ea828f1697cd0815e07416ac760b3be97b7",
+      "transactionType": "CALL",
+      "contractName": "SuitLogic",
+      "contractAddress": "0x7c6D004642c07b06C6bB8E3b89d1dfd18F74679A",
+      "function": "explode()",
+      "arguments": [],
+      "rpc": "https://rpc.ankr.com/eth_goerli",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xc2ba723430706885144a37b2ec74feb82a0c1333",
+        "to": "0x7c6d004642c07b06c6bb8e3b89d1dfd18f74679a",
+        "gas": "0x9a4d",
+        "value": "0x1",
+        "data": "0xb8b3dbc6",
+        "nonce": "0x5",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [
+    "0x9d8116c796e180c64248ab7b16806ea828f1697cd0815e07416ac760b3be97b7"
+  ],
+  "path": "E:/projects/nodeguardians/ng-ctf-helper/broadcast\\AttackBadMechSuit3.s.sol\\5\\run-latest.json",
+  "returns": {},
+  "timestamp": 1698248022,
+  "chain": 5,
+  "multi": false,
+  "commit": "a7a7e76"
+}
