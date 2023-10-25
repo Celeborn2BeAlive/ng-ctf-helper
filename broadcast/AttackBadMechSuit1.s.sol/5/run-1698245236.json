@@ -1,0 +1,36 @@
+{
+  "transactions": [
+    {
+      "hash": "0x30ee711b5d3019cff117ec866ef63fa794a079ce68e6c48c38a54f9d2d3c408e",
+      "transactionType": "CALL",
+      "contractName": "BadMechSuit1",
+      "contractAddress": "0x6386F128E24Db747CA5d66648F8EB0129d7ba883",
+      "function": "consumeFuel()",
+      "arguments": [],
+      "rpc": "https://rpc.ankr.com/eth_goerli",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xc2ba723430706885144a37b2ec74feb82a0c1333",
+        "to": "0x6386f128e24db747ca5d66648f8eb0129d7ba883",
+        "gas": "0x106a1",
+        "value": "0x0",
+        "data": "0x1a2c5bec",
+        "nonce": "0x2",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [
+    "0x30ee711b5d3019cff117ec866ef63fa794a079ce68e6c48c38a54f9d2d3c408e"
+  ],
+  "path": "E:/projects/nodeguardians/ng-ctf-helper/broadcast\\AttackBadMechSuit1.s.sol\\5\\run-latest.json",
+  "returns": {},
+  "timestamp": 1698245236,
+  "chain": 5,
+  "multi": false,
+  "commit": "1a9be75"
+}
