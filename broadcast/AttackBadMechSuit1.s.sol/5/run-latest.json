@@ -1,0 +1,51 @@
+{
+  "transactions": [
+    {
+      "hash": "0x30ee711b5d3019cff117ec866ef63fa794a079ce68e6c48c38a54f9d2d3c408e",
+      "transactionType": "CALL",
+      "contractName": "BadMechSuit1",
+      "contractAddress": "0x6386F128E24Db747CA5d66648F8EB0129d7ba883",
+      "function": "consumeFuel()",
+      "arguments": [],
+      "rpc": "https://rpc.ankr.com/eth_goerli",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xc2ba723430706885144a37b2ec74feb82a0c1333",
+        "to": "0x6386f128e24db747ca5d66648f8eb0129d7ba883",
+        "gas": "0x106a1",
+        "value": "0x0",
+        "data": "0x1a2c5bec",
+        "nonce": "0x2",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [
+    {
+      "transactionHash": "0x30ee711b5d3019cff117ec866ef63fa794a079ce68e6c48c38a54f9d2d3c408e",
+      "transactionIndex": "0x3",
+      "blockHash": "0x4f2096374f7925684ae99e3e1ead0ba31a63a59ac9c70401edd1013704b2821f",
+      "blockNumber": "0x97815a",
+      "from": "0xc2ba723430706885144a37b2EC74feb82A0C1333",
+      "to": "0x6386F128E24Db747CA5d66648F8EB0129d7ba883",
+      "cumulativeGasUsed": "0x4dfda",
+      "gasUsed": "0xbe24",
+      "contractAddress": null,
+      "logs": [],
+      "status": "0x1",
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "effectiveGasPrice": "0xb2d19f39"
+    }
+  ],
+  "libraries": [],
+  "pending": [],
+  "path": "E:/projects/nodeguardians/ng-ctf-helper/broadcast\\AttackBadMechSuit1.s.sol\\5\\run-latest.json",
+  "returns": {},
+  "timestamp": 1698245250,
+  "chain": 5,
+  "multi": false,
+  "commit": "1a9be75"
+}

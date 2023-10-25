@@ -22,6 +22,9 @@ contract AttackBadMechSuit1 is Script {
 
         console.log("Implementation is", implementation);
 
-        console.log(target.throwFists() == keccak256("WHAMM!"));
+        vm.startBroadcast(privateKey);
+        target.consumeFuel();
+        // console.log(target.throwFists() == keccak256("WHAMM!"));
+        vm.stopBroadcast();
     }
 }
