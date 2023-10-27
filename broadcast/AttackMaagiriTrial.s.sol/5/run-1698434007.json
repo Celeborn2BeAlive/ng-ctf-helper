@@ -1,0 +1,66 @@
+{
+  "transactions": [
+    {
+      "hash": "0xce435bf9a4441cfde36e26a8ce91f2c83ae956375c235b85393601fd5a66d2f3",
+      "transactionType": "CALL",
+      "contractName": null,
+      "contractAddress": "0x1108CD41F9a822C3145ff93C8Eab206377542CCA",
+      "function": null,
+      "arguments": null,
+      "rpc": "https://rpc.ankr.com/eth_goerli",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xc2ba723430706885144a37b2ec74feb82a0c1333",
+        "to": "0x1108cd41f9a822c3145ff93c8eab206377542cca",
+        "gas": "0x30f11",
+        "value": "0x0",
+        "data": "0x775c300c",
+        "nonce": "0x14",
+        "accessList": []
+      },
+      "additionalContracts": [
+        {
+          "transactionType": "CREATE2",
+          "address": "0x79bE06D6a9Ec772ba33e4156615bcF16952D3EeC",
+          "initCode": "60a060405234801561001057600080fd5b50436080526080516101ba61002f6000396000604b01526101ba6000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80630c55699c1461004657806356972a031461007f578063b4e2038314610094575b600080fd5b61006d7f000000000000000000000000000000000000000000000000000000000000000081565b60405190815260200160405180910390f35b61009261008d366004610154565b6100a7565b005b6100926100a2366004610154565b6100fe565b806001600160a01b031663ec3f36366040518163ffffffff1660e01b8152600401600060405180830381600087803b1580156100e257600080fd5b505af11580156100f6573d6000803e3d6000fd5b503392505050ff5b806001600160a01b03166373dd90736040518163ffffffff1660e01b8152600401600060405180830381600087803b15801561013957600080fd5b505af115801561014d573d6000803e3d6000fd5b5050505050565b60006020828403121561016657600080fd5b81356001600160a01b038116811461017d57600080fd5b939250505056fea2646970667358221220b8d1a42f26a5e42032c436a667ab68612b4875b2588444256d6edb81d783aa8964736f6c63430008130033"
+        }
+      ],
+      "isFixedGasLimit": false
+    },
+    {
+      "hash": "0xe7915d6cb6036ee1f7fc6de3d4ee3b87a1b794d6d8ab07d0412e42d41a99cd14",
+      "transactionType": "CALL",
+      "contractName": "AttackMaagiriTrial",
+      "contractAddress": "0x79bE06D6a9Ec772ba33e4156615bcF16952D3EeC",
+      "function": "secondStage(address)",
+      "arguments": [
+        "0x4d8E37e3a61F9283d6d26364710cbae3d7e63E20"
+      ],
+      "rpc": "https://rpc.ankr.com/eth_goerli",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xc2ba723430706885144a37b2ec74feb82a0c1333",
+        "to": "0x79be06d6a9ec772ba33e4156615bcf16952d3eec",
+        "gas": "0x10a16",
+        "value": "0x0",
+        "data": "0xb4e203830000000000000000000000004d8e37e3a61f9283d6d26364710cbae3d7e63e20",
+        "nonce": "0x15",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [
+    "0xce435bf9a4441cfde36e26a8ce91f2c83ae956375c235b85393601fd5a66d2f3",
+    "0xe7915d6cb6036ee1f7fc6de3d4ee3b87a1b794d6d8ab07d0412e42d41a99cd14"
+  ],
+  "path": "E:/projects/nodeguardians/ng-ctf-helper/broadcast\\AttackMaagiriTrial.s.sol\\5\\run-latest.json",
+  "returns": {},
+  "timestamp": 1698434007,
+  "chain": 5,
+  "multi": false,
+  "commit": "95a0691"
+}
