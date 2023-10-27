@@ -1,0 +1,36 @@
+{
+  "transactions": [
+    {
+      "hash": "0xdc75d8acb1e99d607f555fa39fef968afa4af9c7eec62fcddb6686aae85f6687",
+      "transactionType": "CALL",
+      "contractName": null,
+      "contractAddress": "0x79bE06D6a9Ec772ba33e4156615bcF16952D3EeC",
+      "function": null,
+      "arguments": null,
+      "rpc": "https://rpc.ankr.com/eth_goerli",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xc2ba723430706885144a37b2ec74feb82a0c1333",
+        "to": "0x79be06d6a9ec772ba33e4156615bcf16952d3eec",
+        "gas": "0xbcbb",
+        "value": "0x0",
+        "data": "0x56972a030000000000000000000000004d8e37e3a61f9283d6d26364710cbae3d7e63e20",
+        "nonce": "0x16",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [
+    "0xdc75d8acb1e99d607f555fa39fef968afa4af9c7eec62fcddb6686aae85f6687"
+  ],
+  "path": "E:/projects/nodeguardians/ng-ctf-helper/broadcast\\AttackMaagiriTrial.s.sol\\5\\run-latest.json",
+  "returns": {},
+  "timestamp": 1698434358,
+  "chain": 5,
+  "multi": false,
+  "commit": "95a0691"
+}

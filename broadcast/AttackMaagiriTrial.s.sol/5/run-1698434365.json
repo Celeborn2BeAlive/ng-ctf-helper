@@ -1,0 +1,51 @@
+{
+  "transactions": [
+    {
+      "hash": "0xdc75d8acb1e99d607f555fa39fef968afa4af9c7eec62fcddb6686aae85f6687",
+      "transactionType": "CALL",
+      "contractName": null,
+      "contractAddress": "0x79bE06D6a9Ec772ba33e4156615bcF16952D3EeC",
+      "function": null,
+      "arguments": null,
+      "rpc": "https://rpc.ankr.com/eth_goerli",
+      "transaction": {
+        "type": "0x02",
+        "from": "0xc2ba723430706885144a37b2ec74feb82a0c1333",
+        "to": "0x79be06d6a9ec772ba33e4156615bcf16952d3eec",
+        "gas": "0xbcbb",
+        "value": "0x0",
+        "data": "0x56972a030000000000000000000000004d8e37e3a61f9283d6d26364710cbae3d7e63e20",
+        "nonce": "0x16",
+        "accessList": []
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [
+    {
+      "transactionHash": "0xdc75d8acb1e99d607f555fa39fef968afa4af9c7eec62fcddb6686aae85f6687",
+      "transactionIndex": "0x0",
+      "blockHash": "0x482c9dd9b46bee1ada283294d56b394a11d3d9ff927c028a1087911d02d11b33",
+      "blockNumber": "0x97b207",
+      "from": "0xc2ba723430706885144a37b2EC74feb82A0C1333",
+      "to": "0x79bE06D6a9Ec772ba33e4156615bcF16952D3EeC",
+      "cumulativeGasUsed": "0x88a4",
+      "gasUsed": "0x88a4",
+      "contractAddress": null,
+      "logs": [],
+      "status": "0x1",
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "effectiveGasPrice": "0xb2d05e08"
+    }
+  ],
+  "libraries": [],
+  "pending": [],
+  "path": "E:/projects/nodeguardians/ng-ctf-helper/broadcast\\AttackMaagiriTrial.s.sol\\5\\run-latest.json",
+  "returns": {},
+  "timestamp": 1698434365,
+  "chain": 5,
+  "multi": false,
+  "commit": "95a0691"
+}
