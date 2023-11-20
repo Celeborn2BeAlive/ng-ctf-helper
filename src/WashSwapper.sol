@@ -2,9 +2,9 @@
 
 pragma solidity >=0.8.0 <0.9.0;
 
-import "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol";
-import "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "v3-periphery/contracts/interfaces/ISwapRouter.sol";
+import "v3-periphery/contracts/libraries/TransferHelper.sol";
+import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 contract WashSwapper {
     address public owner;
