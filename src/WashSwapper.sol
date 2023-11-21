@@ -2,13 +2,13 @@
 
 pragma solidity >=0.8.0 <0.9.0;
 
-import "v3-periphery/contracts/interfaces/ISwapRouter.sol";
-import "v3-periphery/contracts/libraries/TransferHelper.sol";
-import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol";
+import "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 
-contract WashSwapper {
-    address public owner;
-    address public swapper;
+contract WashSwapper is AccessControlEnumerable {
+    bytes32 public constant SWAPPER = keccak256("SWAPPER");
 
     struct SwapParams {
         ISwapRouter swapRouter;
@@ -21,22 +21,18 @@ contract WashSwapper {
     SwapParams[] public swaps;
 
     constructor() {
-        owner = msg.sender;
-        swapper = msg.sender;
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    function setSwapper(address _swapper) external {
-        require(owner == msg.sender, "Only owner");
-        swapper = _swapper;
+    function addSwaps(
+        SwapParams[] memory _swaps
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        for (uint i = 0; i < _swaps.length; ++i) {
+            swaps.push(_swaps[i]);
+        }
     }
 
-    function addSwap(SwapParams memory _swap) external {
-        require(owner == msg.sender, "Only owner");
-        swaps.push(_swap);
-    }
-
-    function doSwaps(uint[] memory _swaps) external {
-        require(swapper == msg.sender, "Only swapper");
+    function doSwaps(uint[] memory _swaps) external onlyRole(SWAPPER) {
         for (uint i = 0; i < _swaps.length; ++i) {
             SwapParams storage swap = swaps[i];
             _doSwap(
@@ -118,8 +114,7 @@ contract WashSwapper {
         );
     }
 
-    function withdraw(IERC20 token) external {
-        require(owner == msg.sender, "Only owner");
+    function withdraw(IERC20 token) external onlyRole(DEFAULT_ADMIN_ROLE) {
         TransferHelper.safeTransfer(
             address(token),
             msg.sender,
