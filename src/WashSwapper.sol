@@ -18,22 +18,24 @@ contract WashSwapper is AccessControlEnumerable {
         bool doBuy;
         bool doSell;
     }
+
     SwapParams[] public swaps;
 
     constructor() {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    function addSwaps(
-        SwapParams[] memory _swaps
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        for (uint i = 0; i < _swaps.length; ++i) {
+    function addSwaps(SwapParams[] memory _swaps)
+        external
+        onlyRole(DEFAULT_ADMIN_ROLE)
+    {
+        for (uint256 i = 0; i < _swaps.length; ++i) {
             swaps.push(_swaps[i]);
         }
     }
 
-    function doSwaps(uint[] memory _swaps) external onlyRole(SWAPPER) {
-        for (uint i = 0; i < _swaps.length; ++i) {
+    function doSwaps(uint256[] memory _swaps) external onlyRole(SWAPPER) {
+        for (uint256 i = 0; i < _swaps.length; ++i) {
             SwapParams storage swap = swaps[i];
             _doSwap(
                 swap.swapRouter,
@@ -53,52 +55,51 @@ contract WashSwapper is AccessControlEnumerable {
         uint24 poolFee,
         bool doBuy,
         bool doSell
-    ) internal returns (uint256 baseAmountOut, uint256 quoteAmountOut) {
-        uint baseBalance = baseToken.balanceOf(address(this));
+    )
+        internal
+        returns (uint256 baseAmountOut, uint256 quoteAmountOut)
+    {
+        uint256 baseBalance = baseToken.balanceOf(address(this));
         if (baseBalance > 0 && doSell) {
-            uint amountIn = (50 * baseBalance) / 1000; // 5% of bag
+            uint256 amountIn = (50 * baseBalance) / 1000; // 5% of bag
             TransferHelper.safeApprove(
-                address(baseToken),
-                address(swapRouter),
-                amountIn
+                address(baseToken), address(swapRouter), amountIn
             );
 
             ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
                 .ExactInputSingleParams({
-                    tokenIn: address(baseToken),
-                    tokenOut: address(quoteToken),
-                    fee: poolFee,
-                    recipient: address(this),
-                    deadline: block.timestamp,
-                    amountIn: amountIn,
-                    amountOutMinimum: 0,
-                    sqrtPriceLimitX96: 0
-                });
+                tokenIn: address(baseToken),
+                tokenOut: address(quoteToken),
+                fee: poolFee,
+                recipient: address(this),
+                deadline: block.timestamp,
+                amountIn: amountIn,
+                amountOutMinimum: 0,
+                sqrtPriceLimitX96: 0
+            });
 
             // The call to `exactInputSingle` executes the swap.
             baseAmountOut = swapRouter.exactInputSingle(params);
         }
 
-        uint quoteBalance = quoteToken.balanceOf(address(this));
+        uint256 quoteBalance = quoteToken.balanceOf(address(this));
         if (quoteBalance > 0 && doBuy) {
-            uint amountIn = (50 * quoteBalance) / 1000; // 5% of bag
+            uint256 amountIn = (50 * quoteBalance) / 1000; // 5% of bag
             TransferHelper.safeApprove(
-                address(quoteToken),
-                address(swapRouter),
-                amountIn
+                address(quoteToken), address(swapRouter), amountIn
             );
 
             ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
                 .ExactInputSingleParams({
-                    tokenIn: address(quoteToken),
-                    tokenOut: address(baseToken),
-                    fee: poolFee,
-                    recipient: address(this),
-                    deadline: block.timestamp,
-                    amountIn: amountIn,
-                    amountOutMinimum: 0,
-                    sqrtPriceLimitX96: 0
-                });
+                tokenIn: address(quoteToken),
+                tokenOut: address(baseToken),
+                fee: poolFee,
+                recipient: address(this),
+                deadline: block.timestamp,
+                amountIn: amountIn,
+                amountOutMinimum: 0,
+                sqrtPriceLimitX96: 0
+            });
 
             // The call to `exactInputSingle` executes the swap.
             quoteAmountOut = swapRouter.exactInputSingle(params);
@@ -107,18 +108,13 @@ contract WashSwapper is AccessControlEnumerable {
 
     function deposit(IERC20 tokenIn, uint256 amountIn) external {
         TransferHelper.safeTransferFrom(
-            address(tokenIn),
-            msg.sender,
-            address(this),
-            amountIn
+            address(tokenIn), msg.sender, address(this), amountIn
         );
     }
 
     function withdraw(IERC20 token) external onlyRole(DEFAULT_ADMIN_ROLE) {
         TransferHelper.safeTransfer(
-            address(token),
-            msg.sender,
-            token.balanceOf(address(this))
+            address(token), msg.sender, token.balanceOf(address(this))
         );
     }
 }

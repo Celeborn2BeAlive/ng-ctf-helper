@@ -61,7 +61,10 @@ contract EliteVeTokenDeadManSwitch {
         operator = _operator;
     }
 
-    function setVeTokenRecipient(address _veTokenRecipient) external onlyOperator {
+    function setVeTokenRecipient(address _veTokenRecipient)
+        external
+        onlyOperator
+    {
         require(_veTokenRecipient != address(0));
         veTokenRecipient = _veTokenRecipient;
     }
@@ -89,5 +92,11 @@ interface IVoter {
 }
 
 interface IVotingEscrow is IERC721 {
-    function isApprovedOrOwner(address _spender, uint256 _tokenId) external view returns (bool);
+    function isApprovedOrOwner(
+        address _spender,
+        uint256 _tokenId
+    )
+        external
+        view
+        returns (bool);
 }

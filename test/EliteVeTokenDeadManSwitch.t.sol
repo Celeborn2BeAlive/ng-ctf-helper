@@ -32,28 +32,48 @@ contract EliteVeTokenDeadManSwitchTest is Test {
     }
 
     // Access control
-    function testRevertWhenUnallowedSetTimeBeforeDead(address badActor, uint256 time) public {
+    function testRevertWhenUnallowedSetTimeBeforeDead(
+        address badActor,
+        uint256 time
+    )
+        public
+    {
         vm.assume(badActor != operator);
         vm.prank(badActor);
         vm.expectRevert();
         dmSwitch.setTimeBeforeDead(time);
     }
 
-    function testRevertWhenUnallowedSetOperator(address badActor, address newOperator) public {
+    function testRevertWhenUnallowedSetOperator(
+        address badActor,
+        address newOperator
+    )
+        public
+    {
         vm.assume(badActor != operator);
         vm.prank(badActor);
         vm.expectRevert();
         dmSwitch.setOperator(newOperator);
     }
 
-    function testRevertWhenUnallowedSetVeTokenRecipient(address badActor, address newRecipient) public {
+    function testRevertWhenUnallowedSetVeTokenRecipient(
+        address badActor,
+        address newRecipient
+    )
+        public
+    {
         vm.assume(badActor != operator);
         vm.prank(badActor);
         vm.expectRevert();
         dmSwitch.setVeTokenRecipient(newRecipient);
     }
 
-    function testRevertWhenUnallowedSetVeTokenId(address badActor, uint256 newTokenId) public {
+    function testRevertWhenUnallowedSetVeTokenId(
+        address badActor,
+        uint256 newTokenId
+    )
+        public
+    {
         vm.assume(badActor != operator);
         vm.prank(badActor);
         vm.expectRevert();
@@ -122,14 +142,24 @@ contract EliteVeTokenDeadManSwitchTest is Test {
         assertEq(dmSwitch.isEnabled(), true);
     }
 
-    function testEllapsedTimeSinceLastVote(uint128 startTime, uint128 ellapsedTime) public {
+    function testEllapsedTimeSinceLastVote(
+        uint128 startTime,
+        uint128 ellapsedTime
+    )
+        public
+    {
         vm.warp(startTime);
         voter.vote(veTokenId);
         vm.warp(uint256(startTime) + ellapsedTime);
         assertEq(dmSwitch.ellapsedTimeSinceLastVote(), ellapsedTime);
     }
 
-    function testAreYouDeadYet(uint128 startTime, uint128 timeBeforeDead) public {
+    function testAreYouDeadYet(
+        uint128 startTime,
+        uint128 timeBeforeDead
+    )
+        public
+    {
         vm.prank(operator);
         dmSwitch.setTimeBeforeDead(timeBeforeDead);
 
@@ -147,7 +177,13 @@ contract EliteVeTokenDeadManSwitchTest is Test {
         assertEq(dmSwitch.areYouDeadYet(), true);
     }
 
-    function testSaveVeTokenScenario(address externalActor, uint128 startTime, uint128 timeBeforeDead) public {
+    function testSaveVeTokenScenario(
+        address externalActor,
+        uint128 startTime,
+        uint128 timeBeforeDead
+    )
+        public
+    {
         vm.assume(externalActor != address(0));
 
         vm.prank(operator);
@@ -195,12 +231,27 @@ contract VotingEscrowMock is ERC721, IVotingEscrow {
         resetFlag[tokenId] = true;
     }
 
-    function isApprovedOrOwner(address _spender, uint256 _tokenId) external view returns (bool) {
-        return _spender == ownerOf(_tokenId) || getApproved(_tokenId) == _spender
+    function isApprovedOrOwner(
+        address _spender,
+        uint256 _tokenId
+    )
+        external
+        view
+        returns (bool)
+    {
+        return _spender == ownerOf(_tokenId)
+            || getApproved(_tokenId) == _spender
             || isApprovedForAll(ownerOf(_tokenId), _spender);
     }
 
-    function transferFrom(address _from, address _to, uint256 _tokenId) public override(ERC721, IERC721) {
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    )
+        public
+        override(ERC721, IERC721)
+    {
         require(resetFlag[_tokenId], "attached");
         super.transferFrom(_from, _to, _tokenId);
     }
