@@ -104,12 +104,6 @@ contract EliteVeTokenDeadManSwitchTest is Test {
 
     // Features
 
-    function testRevertWhenSaveVeTokenBeforeDead(address badActor) public {}
-
-    function testSaveVeTokenTransfersToRecipientWhenOperatorIsDead() public {}
-
-    function testSaveVeTokenResetsVeTokenBeforeTransfer() public {}
-
     function testIsEnabledWhenApproved() public {
         assertEq(dmSwitch.isEnabled(), false);
 
@@ -128,13 +122,71 @@ contract EliteVeTokenDeadManSwitchTest is Test {
         assertEq(dmSwitch.isEnabled(), true);
     }
 
-    function testEllapsedTimeSinceLastVote() public {}
+    function testEllapsedTimeSinceLastVote(uint128 startTime, uint128 ellapsedTime) public {
+        vm.warp(startTime);
+        voter.vote(veTokenId);
+        vm.warp(uint256(startTime) + ellapsedTime);
+        assertEq(dmSwitch.ellapsedTimeSinceLastVote(), ellapsedTime);
+    }
 
-    function testAreYouDeadYet() public {}
+    function testAreYouDeadYet(uint128 startTime, uint128 timeBeforeDead) public {
+        vm.prank(operator);
+        dmSwitch.setTimeBeforeDead(timeBeforeDead);
+
+        vm.warp(startTime);
+        voter.vote(veTokenId);
+        assertEq(dmSwitch.areYouDeadYet(), false);
+
+        vm.warp(uint256(startTime) + timeBeforeDead / 2);
+        assertEq(dmSwitch.areYouDeadYet(), false);
+
+        vm.warp(uint256(startTime) + timeBeforeDead);
+        assertEq(dmSwitch.areYouDeadYet(), false);
+
+        vm.warp(uint256(startTime) + timeBeforeDead + 1);
+        assertEq(dmSwitch.areYouDeadYet(), true);
+    }
+
+    function testSaveVeTokenScenario(address externalActor, uint128 startTime, uint128 timeBeforeDead) public {
+        vm.assume(externalActor != address(0));
+
+        vm.prank(operator);
+        dmSwitch.setTimeBeforeDead(timeBeforeDead);
+
+        vm.prank(veTokenOwner);
+        veToken.approve(address(dmSwitch), veTokenId);
+        assertEq(dmSwitch.isEnabled(), true);
+
+        vm.warp(startTime);
+        voter.vote(veTokenId);
+
+        vm.startPrank(externalActor);
+
+        vm.expectRevert();
+        dmSwitch.saveVeToken();
+
+        vm.warp(uint256(startTime) + timeBeforeDead / 2);
+        vm.expectRevert();
+        dmSwitch.saveVeToken();
+
+        vm.warp(uint256(startTime) + timeBeforeDead);
+        vm.expectRevert();
+        dmSwitch.saveVeToken();
+
+        vm.warp(uint256(startTime) + timeBeforeDead + 1);
+
+        assertEq(veToken.resetFlag(veTokenId), false);
+        assertEq(veToken.ownerOf(veTokenId), veTokenOwner);
+
+        dmSwitch.saveVeToken();
+
+        assertEq(veToken.resetFlag(veTokenId), true);
+        assertEq(veToken.ownerOf(veTokenId), veTokenRecipient);
+    }
 }
 
 contract VotingEscrowMock is ERC721, IVotingEscrow {
-    mapping(uint256 => bool) resetFlag;
+    mapping(uint256 => bool) public resetFlag;
 
     constructor() ERC721("VotingEscrowMock", "veNFT") {}
 
