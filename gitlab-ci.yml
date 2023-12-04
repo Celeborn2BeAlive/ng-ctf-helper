@@ -1,0 +1,21 @@
+stages:
+  - qa
+
+.foundry:
+  image: ghcr.io/foundry-rs/foundry:latest
+
+lint:
+  extends: .foundry
+  stage: qa
+  script:
+    - forge fmt --check
+
+test:
+  extends: .foundry
+  stage: qa
+  script:
+    - forge test
+  cache:
+    paths:
+      - cache
+      - out

@@ -15,3 +15,8 @@ polygon = "${POLYGON_RPC_URL}"
 [etherscan]
 goerli = { key = "${ETHERSCAN_API_KEY}" }
 polygon = { key = "${POLYGONSCAN_API_KEY" }
+
+[fmt]
+line_length = 80
+multiline_func_header = "all"
+number_underscore = "thousands"
