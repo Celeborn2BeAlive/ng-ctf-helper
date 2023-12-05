@@ -1,0 +1,1 @@
+cast abi-encode "constructor(address _veToken,address _voter,address _operator,address _veTokenRecipient,uint256 _veTokenId)" "0xB419cE2ea99f356BaE0caC47282B9409E38200fa" "0x71F6CAc5C79A9AF50f47Df0568c075A6055ba830" "0x49a5492FDFe5AcC966dD5f41310dfDfe8dAA349C" "0xDf6C328ec0E9818B320F563cA6aBb6c80574f558" "18405"
