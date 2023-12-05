@@ -8,6 +8,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 contract EliteVeTokenDeadManSwitchTest is Test {
     EliteVeTokenDeadManSwitch public dmSwitch;
 
+
     address veTokenOwner = address(0x42);
     address operator = address(0x543);
     address veTokenRecipient = address(0xc2ba);

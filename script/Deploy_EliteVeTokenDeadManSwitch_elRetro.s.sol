@@ -14,9 +14,9 @@ contract MyScript is Script {
 
         vm.startBroadcast(privateKey);
 
-        EliteVeTokenDeadManSwitch dmSwitch = new EliteVeTokenDeadManSwitch(
+        new EliteVeTokenDeadManSwitch(
           IVotingEscrow(0xB419cE2ea99f356BaE0caC47282B9409E38200fa),
-          IVoter(0x71F6CAc5C79A9AF50f47Df0568c075A6055ba830),
+          IVoter(0xAcCbA5e852AB85E5E3a84bc8E36795bD8cEC5C73),
           c2ba,
           safe,
           18405
